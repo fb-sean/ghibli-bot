@@ -1,0 +1,19 @@
+{
+    "type": "commonjs",
+    "main": "./src/index.js",
+    "scripts": {
+        "start": "node .",
+        "test": "nodemon ."
+    },
+    "author": "Mezo",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.4.0",
+        "chalk-advanced": "^1.0.3",
+        "dotenv": "^16.0.0",
+        "interactions.js": "^1.2.8"
+    },
+    "devDependencies": {
+        "nodemon": "2.0.18"
+    }
+}
