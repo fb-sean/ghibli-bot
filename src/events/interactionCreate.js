@@ -17,6 +17,8 @@ module.exports = async (client, interaction) => {
     }
 
     if(interaction.isAutoComplete()) {
+        interaction.autoCompleteStart = Date.now();
+
         const command = client.commands.get(interaction.commandName);
         if (!command && command.autoComplete) return;
 

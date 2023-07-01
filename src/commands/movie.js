@@ -10,11 +10,19 @@ module.exports = {
             description: "The movie title you want to get information about",
             type: 3,
             required: true,
+            autocomplete: true,
         },
     ],
 
     async autoComplete(interaction, client) {
         const input = interaction.options.getStringOption("title")?.value ?? '';
+
+        return interaction.sendAutoComplete([
+            {
+                name: "Test",
+                value: "placeholder",
+            }
+        ]);
 
         axios
             .get('https://ghibli.rest/films?search=' + input, {
@@ -36,12 +44,14 @@ module.exports = {
                     }
                 ]);
 
-                return interaction.sendAutoComplete(data.map(movie => {
+                interaction.sendAutoComplete(data.map(movie => {
                     return {
                         name: movie.title,
                         value: movie.title,
                     }
                 }).slice(0, 25));
+
+                console.log('Took: ' + (Date.now() - interaction.autoCompleteStart) + 'ms');
             })
             .catch(error => {
                 console.error(error);
