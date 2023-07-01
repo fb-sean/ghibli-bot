@@ -14,7 +14,7 @@ module.exports = {
     ],
 
     async autoComplete(interaction, client) {
-        const input = interaction.options.getStringOption("title").value ?? '';
+        const input = interaction.options.getStringOption("title")?.value ?? '';
 
         axios
             .get('https://ghibli.rest/films?search=' + input, {
